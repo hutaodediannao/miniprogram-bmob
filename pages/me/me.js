@@ -1,27 +1,16 @@
 Page({
-
-    back() {
-        wx.navigateBack()
-
+    data: {
+        radius: false,
     },
-
-    data: {},
-
-    onLoad: function (options) {
-
+    handleTap(e) {
+        console.log(e);
     },
-
-    show(){
-        wx.showModal({
-            title:'这是头部',
-            content:'这是内容',
-            cancel:true,
-            success:true,
-            fail:true,
-            complete:true,
-            cancelText:'关闭',
-            cancelColor: "#ff0000",
-            confirmColor: '#00ff00',
-        })
-    }
+    catchTap(e) {
+        console.log(e);
+    },
+    handleSetRadius(checked) {
+        this.setData({
+            radius: checked,
+        });
+    },
 });

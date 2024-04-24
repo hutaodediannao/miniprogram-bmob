@@ -1,3 +1,9 @@
 <view class="base">
 
+    <ant-button
+            type="primary"
+            bind:tap="handleTap">
+        主要按钮
+    </ant-button>
+
 </view>

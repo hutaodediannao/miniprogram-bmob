@@ -1,5 +1,6 @@
 {
   "component": true,
   "usingComponents": {
+    "ant-button": "antd-mini/Button/index"
   }
 }

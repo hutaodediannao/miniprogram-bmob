@@ -1,5 +1,12 @@
 Component({
     properties: {},
     data: {},
-    methods: {}
+    methods: {
+        handleTap() {
+            wx.navigateTo({
+                url: '/pages/me/me'
+            })
+
+        }
+    }
 });
