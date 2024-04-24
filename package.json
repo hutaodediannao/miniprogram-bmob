@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@vant/weapp": "^1.11.5",
     "antd-mini": "^2.30.0",
     "axios": "^1.6.8"
   },
