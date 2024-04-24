@@ -1,0 +1,5 @@
+<view>
+    <button type="warn" bind:tap="back">返回</button>
+    <button type="primary" bind:tap="show">弹窗提示</button>
+
+</view>

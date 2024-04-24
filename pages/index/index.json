@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "Button",
+  "usingComponents": {
+    "container": "antd-mini/Container/index",
+    "tab-bar": "antd-mini/TabBar/index",
+    "ant-button": "antd-mini/Button/index",
+    "ant-container": "antd-mini/Container/index",
+    "navigation-header": "/components/navigation-header/navigation-header",
+    "tab-page": "/components/tab-page/tab-page"
+  }
+}

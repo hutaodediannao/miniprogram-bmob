@@ -1,0 +1,14 @@
+view {
+  background-color: red;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+view button {
+  border-radius: 25rpx;
+  margin-top: 25rpx;
+}
+/*# sourceMappingURL=me.wxss.map */

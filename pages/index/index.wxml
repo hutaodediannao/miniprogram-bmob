@@ -1,0 +1,13 @@
+<view class="content">
+    <navigation-header title="{{title}}" style="width:100%" showBack="{{true}}"
+    backIconUrl="{{backIconUrl}}"></navigation-header>
+
+    <tab-page style="width:100%;" pageIndex="{{current}}"></tab-page>
+
+    <tab-bar items="{{ tabs }}" current="{{ current }}" bind:change="handleChange" className="bottomNav"/>
+
+</view>
+
+
+
+

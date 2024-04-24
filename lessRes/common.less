@@ -1,0 +1,32 @@
+@full-width: 100%;
+@full-height: 100%;
+@base-color: #efdd10;
+
+@bottom-nav-height: 55px;
+@bottom-nav-color: #ffffff;
+@bottom-nav-line-height: 1px;
+//底部tabBar總高度
+@bottom-nav-group-height:@bottom-nav-height+@bottom-nav-line-height;
+
+.flex-jc(@justify-content, @flex-direction:column) {
+  display: flex;
+  flex-direction: @flex-direction;
+  justify-content: @justify-content;
+  align-items: center;
+}
+
+.flex-v-end {
+  .flex-jc(flex-end)
+}
+
+.flex-v-start {
+  .flex-jc(flex-start)
+}
+
+.flex-v-center {
+  .flex-jc(center)
+}
+
+.flex-h-center {
+  .flex-jc(space-between, row)
+}

@@ -1,0 +1,9 @@
+<view style="height:{{height}}px; padding-top:{{pt}}px" class="header">
+    <view  class="header-item">
+        <image wx:if="{{showBack}}" src="{{backIconUrl}}" bind:tap="back"></image>
+    </view>
+
+    <text>{{title}}</text>
+
+    <view class="header-item"></view>
+</view>

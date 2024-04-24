@@ -1,0 +1,14 @@
+<view class="base" style="height:{{tabPageHeight}}px; background-color:{{pageColor}};">
+
+
+
+
+
+
+
+
+
+
+
+
+</view>

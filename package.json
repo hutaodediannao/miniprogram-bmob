@@ -1,0 +1,22 @@
+{
+  "name": "miniprogram-bmob",
+  "version": "1.0.0",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vant/weapp": "^1.11.5",
+    "antd-mini": "^2.30.0",
+    "axios": "^1.6.8"
+  },
+  "devDependencies": {
+    "less": "^4.2.0",
+    "less-loader": "^12.2.0",
+    "miniprogram-ci": "^1.9.15"
+  },
+  "description": ""
+}
