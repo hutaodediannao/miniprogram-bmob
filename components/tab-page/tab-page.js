@@ -9,7 +9,6 @@ Component({
     },
     data: {
         tabPageHeight: tabPageHeight,
-        pageColor: '#ff0000'
     },
     methods: {
         changePage(param) {
@@ -19,24 +18,6 @@ Component({
     observers: {
         'pageIndex': function (v) {
             console.log("tabPage组件中监听到页面切换事件=======>", v);
-            let color;
-            switch (v) {
-                case 0:
-                    color = '#ff0000';
-                    break
-                case 1:
-                    color = '#00ff00';
-                    break
-                case 2:
-                    color = '#0000ff';
-                    break
-                default:
-                    color = '#ff0000';
-                    break
-            }
-            this.setData({
-                pageColor: color,
-            })
         }
     }
 });
