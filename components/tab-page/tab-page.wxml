@@ -1,14 +1,8 @@
 <view class="base" style="height:{{tabPageHeight}}px; background-color:{{pageColor}};">
 
 
-
-
-
-
-
-
-
-
-
+    <tab-page-home wx:if="{{pageIndex === 0}}"></tab-page-home>
+    <tab-page-love wx:elif="{{pageIndex === 1}}"></tab-page-love>
+    <tab-page-me wx:elif="{{pageIndex === 2}}"></tab-page-me>
 
 </view>

@@ -1,5 +1,8 @@
 {
   "component": true,
   "usingComponents": {
+    "tab-page-home": "/components/tab-page-home/tab-page-home",
+    "tab-page-love": "/components/tab-page-love/tab-page-love",
+    "tab-page-me": "/components/tab-page-me/tab-page-me"
   }
 }
