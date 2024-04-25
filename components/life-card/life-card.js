@@ -6,19 +6,26 @@ Component({
         }
     },
     data: {
-        timeIcon:'ClockCircleOutline',
-        locationIcon:'EnvironmentOutline',
-        nameIcon:'FlagOutline',
-        personIcon:'TeamOutline',
+        timeIcon: 'ClockCircleOutline',
+        locationIcon: 'EnvironmentOutline',
+        nameIcon: 'FlagOutline',
+        personIcon: 'TeamOutline',
 
         textWidth() {
             let textWidth = wx.getWindowInfo().screenWidth - 10 * 4 - 160 - 10;
             console.log("textWidth =======>", textWidth);
             return textWidth;
         },
-        cardWidth(){
-            return wx.getWindowInfo().screenWidth - 10*2;
+        cardWidth() {
+            return wx.getWindowInfo().screenWidth - 10 * 2;
         }
     },
-    methods: {}
+    methods: {
+        tap() {
+            wx.navigateTo({
+                url:'/pages/detail/detail'
+            })
+
+        }
+    }
 });

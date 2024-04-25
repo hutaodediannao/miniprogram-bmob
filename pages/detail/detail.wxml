@@ -1,0 +1,6 @@
+<view class="base"
+>
+
+    <navigation-header title="开始上车"></navigation-header>
+
+</view>

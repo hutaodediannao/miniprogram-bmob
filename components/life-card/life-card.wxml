@@ -35,6 +35,7 @@
                 type="primary"
                 icon="UserAddOutline"
                 inline
+                bind:tap="tap"
                 size="small">立即上车
         </ant-button>
 
