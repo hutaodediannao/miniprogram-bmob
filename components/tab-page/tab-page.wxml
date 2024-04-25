@@ -1,4 +1,4 @@
-<view class="base" style="height:{{tabPageHeight}}px; background-color:{{pageColor}};">
+<view class="base" style="height:{{tabPageHeight}}px;">
 
 
     <tab-page-home wx:if="{{pageIndex === 0}}"></tab-page-home>

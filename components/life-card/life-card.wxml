@@ -1,0 +1,31 @@
+<view class="cardBase" style="width:{{cardWidth()}}px">
+    <view class="cardContent">
+        <block wx:if="{{lifeData != null}}">
+            <image src="{{lifeData.icon}}"></image>
+
+            <view class="msgInfo" style="width:{{textWidth()}}px;">
+                <text class="textCla">{{lifeData.title}}</text>
+                <view class="event">
+                    <image src=""></image>
+                    <text>{{lifeData.time}}</text>
+                </view>
+                <view class="event">
+                    <ant-icon type="ClockCircleOutline"></ant-icon>
+                    <text>{{lifeData.location}}</text>
+                </view>
+                <view class="event">
+                    <image src=""></image>
+                    <text style="width:{{textWidth()-20}}px;">{{lifeData.name}}</text>
+                </view>
+
+            </view>
+        </block>
+    </view>
+    <view class="line"></view>
+    <view class="cardBottom">
+
+
+
+
+    </view>
+</view>

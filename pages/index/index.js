@@ -19,9 +19,10 @@ Page({
         ],
         current: 0,
         title: '',
-        backIconUrl:'/imgRes/lv.png',
+        backIconUrl: '/imgRes/lv.png',
     },
     handleChange(index) {
+        console.log('handleChange======> ', index);
         let pos = index.detail;
         console.log(pos);
         this.setData({current: pos, title: this.getTitle(pos)});
@@ -32,9 +33,15 @@ Page({
     },
 
     onShow() {
-        let pos = 0;
-        if (this.data.tabs.length > 0) {
-            this.setData({current: pos, title: this.getTitle(pos)});
+        //首次加载头部title
+        if (this.data.title === '') {
+            console.log("首次加载: onShow()=====>");
+            let pos = 0;
+            if (this.data.tabs.length > 0) {
+                this.setData({current: pos, title: this.getTitle(pos)});
+            }
+        } else {
+            console.log("不是首次加载: onShow()不做处理");
         }
     }
 });

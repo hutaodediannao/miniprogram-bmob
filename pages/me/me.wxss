@@ -1,14 +1,39 @@
-view {
-  background-color: red;
-  height: 100%;
-  width: 100%;
+.flex-v-end {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+.flex-v-start {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.flex-v-center {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-view button {
-  border-radius: 25rpx;
-  margin-top: 25rpx;
+.flex-h-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.flex-h-start {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.base {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 /*# sourceMappingURL=me.wxss.map */

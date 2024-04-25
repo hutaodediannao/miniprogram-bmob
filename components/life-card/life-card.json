@@ -1,6 +1,6 @@
 {
   "component": true,
   "usingComponents": {
-    "life-card": "/components/life-card/life-card"
+    "ant-icon": "antd-mini/icon/index"
   }
 }

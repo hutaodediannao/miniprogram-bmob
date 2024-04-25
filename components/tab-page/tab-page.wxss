@@ -22,6 +22,12 @@
   justify-content: space-between;
   align-items: center;
 }
+.flex-h-start {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
 .base {
   width: 100%;
 }
