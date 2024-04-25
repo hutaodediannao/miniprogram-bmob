@@ -35,11 +35,26 @@ Component({
                 return;
             }
             let that = this;
-            this.setTimeout(v => {
+            setTimeout(v => {
                     console.log('refresherrefresh', v);
                     let ls = that.data.list;
-                    ls.push(that.item);
-                    that.setData({isLoading: false,})
+                    ls.push({
+                        wxKey: '1',
+                        icon: 'https://img2.baidu.com/it/u=2286064893,2631559078&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=313',
+                        title: "5月1号 新手局,富春江七里扬帆,是江南水乡的一道独特风景线.此段江面狭窄...",
+                        time: "2019-03-05",
+                        location: '深圳-南山区-南山地铁站A出口',
+                        name: '富春江徒步新手局,富春江七里扬帆,是江南水乡的一道独特风景线.',
+                        personCount: 35,
+
+                    });
+
+
+
+                    that.setData({
+                        isLoading: false,
+                        list: ls
+                    })
                 }
                 , 2000, 0)
         },
