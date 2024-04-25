@@ -1,31 +1,31 @@
 .flex-v-end {
   display: flex;
-  flex-direction: column;
   justify-content: flex-end;
+  flex-direction: column;
   align-items: center;
 }
 .flex-v-start {
   display: flex;
-  flex-direction: column;
   justify-content: flex-start;
+  flex-direction: column;
   align-items: center;
 }
 .flex-v-center {
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
 }
 .flex-h-center {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
+  flex-direction: row;
   align-items: center;
 }
 .flex-h-start {
   display: flex;
-  flex-direction: row;
   justify-content: flex-start;
+  flex-direction: row;
   align-items: center;
 }
 .base {

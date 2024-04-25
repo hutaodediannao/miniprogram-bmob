@@ -6,15 +6,16 @@
             <view class="msgInfo" style="width:{{textWidth()}}px;">
                 <text class="textCla">{{lifeData.title}}</text>
                 <view class="event">
-                    <image src=""></image>
+                    <ant-icon type="{{timeIcon}}" className="ic"></ant-icon>
                     <text>{{lifeData.time}}</text>
                 </view>
                 <view class="event">
-                    <ant-icon type="ClockCircleOutline"></ant-icon>
+
+                    <ant-icon type="{{locationIcon}}" className="ic"></ant-icon>
                     <text>{{lifeData.location}}</text>
                 </view>
                 <view class="event">
-                    <image src=""></image>
+                    <ant-icon type="{{nameIcon}}" className="ic"></ant-icon>
                     <text style="width:{{textWidth()-20}}px;">{{lifeData.name}}</text>
                 </view>
 
@@ -24,8 +25,18 @@
     <view class="line"></view>
     <view class="cardBottom">
 
+        <view class="event">
+            <ant-icon type="{{personIcon}}" className="ic"></ant-icon>
+            <text>{{lifeData.personCount}} 人已上车</text>
+        </view>
 
-
+        <ant-button
+                style="background-color:#efdd10;"
+                type="primary"
+                icon="UserAddOutline"
+                inline
+                size="small">立即上车
+        </ant-button>
 
     </view>
 </view>
