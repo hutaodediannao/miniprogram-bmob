@@ -12,7 +12,7 @@ Component({
 
             },
         ],
-        triggered: false,
+        triggered: false,//标识下拉刷新状态
         isLoading: false,
     },
 
@@ -53,7 +53,8 @@ Component({
 
                     that.setData({
                         isLoading: false,
-                        list: ls
+                        list: ls,
+                        triggered:false,
                     })
                 }
                 , 2000, 0)
