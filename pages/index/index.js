@@ -4,17 +4,17 @@ Page({
             {
                 icon: '/imgRes/home.png',
                 activeIcon: '/imgRes/homeS.png',
-                text: '首页',
+                text: '户外野趣',
             },
             {
                 icon: '/imgRes/Scene.png',
                 activeIcon: '/imgRes/SceneS.png',
-                text: '收藏',
+                text: '收藏爱好',
             },
             {
                 icon: '/imgRes/me.png',
                 activeIcon: '/imgRes/meS.png',
-                text: '我的',
+                text: '我的个人',
             },
         ],
         current: 0,
