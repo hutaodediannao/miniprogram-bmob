@@ -7,8 +7,8 @@ Page({
                 text: '户外野趣',
             },
             {
-                icon: '/imgRes/Scene.png',
-                activeIcon: '/imgRes/SceneS.png',
+                icon: '/imgRes/scene.png',
+                activeIcon: '/imgRes/sceneS.png',
                 text: '收藏爱好',
             },
             {

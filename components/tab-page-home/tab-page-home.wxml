@@ -4,6 +4,15 @@
             type="custom"
             scroll-y
             style="width:100%; height:100%;"
+            enable-passive="true"
+            refresher-enabled="true"
+            refresher-threshold="45"
+            refresher-default-style="black"
+            enhanced="true"
+            show-scrollbar="false"
+            refresher-triggered="{{triggered}}"
+            bind:refresherrefresh="refresherrefresh"
+            bindscrolltolower="scrolltolower"
     >
         <list-builder
                 list="{{list}}"
