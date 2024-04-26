@@ -12,7 +12,7 @@
 .ant-list-footer {
   display: flex;
   align-items: center;
-  padding: 8px 12px;
+  padding: 0 0;
   line-height: 1.4;
   font-size: 15px;
   color: #999999;

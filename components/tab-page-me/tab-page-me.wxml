@@ -1,13 +1,41 @@
 <view class="base">
-
-    <block>
-        <ant-button
-                type="primary"
-                bind:tap="handleTap"
-                style="width:120px; margin:30px;">
-            主要按钮
-        </ant-button>
-    </block>
-
+    <view class="meHeader">
+        <image src="{{userInfo.avatarIcon}}" class="meBg"></image>
+        <view class="user">
+            <image src="{{userInfo.avatarIcon}}" class="meBgAvatar"></image>
+            <view class="userInfo">
+                <text>{{userInfo.nickName}}</text>
+                <image wx:if="{{userInfo.sex==='m'}}" src="{{sex.m}}" class="sexIcon"/>
+                <image wx:else src="{{sex.w}}" class="sexIcon"/>
+            </view>
+        </view>
+    </view>
+    <view style="width:100%; background-color:green;">
+        <ant-list
+                className="meList"
+                radius="{{ radius }}">
+            <ant-list-item
+                    image="UserSetOutline"
+                    arrow="right"
+                    bind:tap="handleTap"
+                    data-info="个人资料">
+                个人资料
+            </ant-list-item>
+            <ant-list-item
+                    image="SetOutline"
+                    arrow="right"
+                    catch:tap="catchTap"
+                    data-info="设置">
+                设置
+            </ant-list-item>
+            <ant-list-item
+                    image="UploadOutline"
+                    arrow="right"
+                    catch:tap="showTap"
+                    data-info="退出登录">
+                退出登录
+            </ant-list-item>
+        </ant-list>
+    </view>
 
 </view>

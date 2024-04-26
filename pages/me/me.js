@@ -1,5 +1,5 @@
 Page({
     data: {
-        title:'个人中心'
+        title:'个人资料'
     }
 });

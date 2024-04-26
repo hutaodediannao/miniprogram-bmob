@@ -26,5 +26,5 @@
   max-height: 24px;
 }
 .ant-tab-bar-text {
-  font-size: 10px;
+  font-size: 15px;
 }

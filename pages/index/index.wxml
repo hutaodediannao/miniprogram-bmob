@@ -1,8 +1,8 @@
 <view class="content">
-    <navigation-header title="{{title}}" style="width:100%" showBack="{{true}}"
-    backIconUrl="{{backIconUrl}}"></navigation-header>
+    <navigation-header wx:if="{{current!==2}}" title="{{title}}" style="width:100%" showBack="{{true}}"
+                       backIconUrl="{{backIconUrl}}"/>
 
-    <tab-page style="width:100%;" pageIndex="{{current}}"></tab-page>
+    <tab-page style="width:100%;" pageIndex="{{current}}"/>
 
     <tab-bar items="{{ tabs }}" current="{{ current }}" bind:change="handleChange" className="bottomNav"/>
 

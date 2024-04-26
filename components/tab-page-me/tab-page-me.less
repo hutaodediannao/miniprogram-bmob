@@ -3,20 +3,56 @@
 .base {
   width: @full-width;
   height: @full-height;
-  background-color: #e932f6;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
 
-  .gp {
-    width: 100px;
-    height: 50px;
+  .meHeader {
+    width: @full-width;
+    height: 280px;
+    background-color: #464545;
+    display: block;
 
-    button {
+    .meBg {
+      width: @full-width;
+      height: @full-height;
+      z-index: -1;
+      filter: blur(2px)
+    }
 
+    .user {
+      width: @full-width;
+      height: @full-height;
+      z-index: 100;
+      position: absolute;
+        margin-top: 30px;
+      .flex-v-center;
+
+      .meBgAvatar {
+        width: 60px;
+        height: 60px;
+        border-width: 2px;
+        border-color: red;
+        border-radius: 30px;
+      }
+
+      .userInfo {
+        margin-top: 10px;
+        color: red;
+        font-size: 16px;
+        .flex-h-center-center;
+
+        .sexIcon{
+          width: 16px;
+          height: 16px;
+          margin-left: 10px;
+        }
+      }
     }
   }
 
-
+  .meList {
+    width: @full-width;
+  }
 }
