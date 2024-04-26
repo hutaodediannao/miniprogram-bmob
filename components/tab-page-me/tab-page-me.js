@@ -13,8 +13,9 @@ Component({
     },
     methods: {
         submitTap() {
+          console.log('submitHistory')
             wx.navigateTo({
-                url: '/pages/submitHistory/submitHistory'
+                url: '/pages/submit/submit'
             })
         },
         showTap() {

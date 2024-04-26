@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/me/me",
     "pages/detail/detail",
-    "pages/setting/setting"
+    "pages/setting/setting",
+    "pages/submit/submit"
   ],
   "window": {
     "navigationBarTextStyle": "black",
