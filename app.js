@@ -1,2 +1,8 @@
 // app.js
-App({})
+App({
+    onLaunch: function() {
+        this.globalData = {
+            homePageDataList:[]
+        }
+    }
+})
