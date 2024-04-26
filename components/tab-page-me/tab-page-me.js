@@ -12,11 +12,16 @@ Component({
         },
     },
     methods: {
+        submitTap() {
+            wx.navigateTo({
+                url: '/pages/submitHistory/submitHistory'
+            })
+        },
         showTap() {
             wx.showModal({
                 title: '退出登录',
                 content: '确定退出登录吗?',
-                success (res) {
+                success(res) {
                     if (res.confirm) {
                         console.log('用户点击确定')
                     } else if (res.cancel) {

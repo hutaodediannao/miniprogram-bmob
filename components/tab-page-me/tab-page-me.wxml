@@ -22,6 +22,13 @@
                 个人资料
             </ant-list-item>
             <ant-list-item
+                    image="TruckOutline"
+                    arrow="right"
+                    bind:tap="submitTap"
+                    data-info="我的报名">
+                我的报名
+            </ant-list-item>
+            <ant-list-item
                     image="SetOutline"
                     arrow="right"
                     catch:tap="catchTap"
