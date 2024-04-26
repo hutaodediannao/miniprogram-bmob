@@ -1,0 +1,5 @@
+<view class="base">
+    <navigation-header title="{{title}}" style="width:100%" showBack="{{true}}"/>
+
+
+</view>

@@ -4,7 +4,8 @@
     "pages/me/me",
     "pages/detail/detail",
     "pages/setting/setting",
-    "pages/submit/submit"
+    "pages/submit/submit",
+    "pages/cardInfo/cardInfo"
   ],
   "window": {
     "navigationBarTextStyle": "black",

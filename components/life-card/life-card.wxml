@@ -1,5 +1,5 @@
 <view class="cardBase" style="width:{{cardWidth()}}px">
-    <view class="cardContent">
+    <view class="cardContent" bind:tap="toInfo">
         <block wx:if="{{lifeData != null}}">
             <image src="{{lifeData.icon}}"></image>
 

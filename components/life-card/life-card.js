@@ -20,9 +20,15 @@ Component({
         }
     },
     methods: {
+        toInfo() {
+            wx.navigateTo({
+                url: '/pages/cardInfo/cardInfo'
+            })
+        },
+
         tap() {
             wx.navigateTo({
-                url:'/pages/detail/detail'
+                url: '/pages/detail/detail'
             })
 
         }
