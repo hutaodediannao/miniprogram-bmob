@@ -87,7 +87,9 @@ Component({
                 console.log(this.data.tag, '开始加载刷新数据');
                 let ls = that.data.list;
                 ls.length = 0;
-                ls.push(that.data.item);
+                for (let i = 0; i < 5; i++) {
+                    ls.push(that.data.item);
+                }
 
                 that.setData({
                     isLoading: false,
