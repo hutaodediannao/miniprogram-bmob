@@ -46,10 +46,7 @@ Component({
                         location: '深圳-南山区-南山地铁站A出口',
                         name: '富春江徒步新手局,富春江七里扬帆,是江南水乡的一道独特风景线.',
                         personCount: 35,
-
                     });
-
-
 
                     that.setData({
                         isLoading: false,
