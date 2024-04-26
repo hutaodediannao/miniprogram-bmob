@@ -26,6 +26,7 @@ Component({
             })
         },
         catchTap() {
+            console.log("tab-page-me", "catchTap()")
             wx.navigateTo({
                 url: '/pages/setting/setting'
             })

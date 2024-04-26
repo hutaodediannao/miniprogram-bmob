@@ -2,8 +2,8 @@
     <view class="meHeader">
         <image src="{{userInfo.avatarIcon}}" class="meBg"></image>
         <view class="user">
-            <image src="{{userInfo.avatarIcon}}" class="meBgAvatar"></image>
-            <view class="userInfo">
+            <image src="{{userInfo.avatarIcon}}" class="meBgAvatar" bindtap="handleTap"/>
+            <view class="userInfo" bindtap="handleTap">
                 <text>{{userInfo.nickName}}</text>
                 <image wx:if="{{userInfo.sex==='m'}}" src="{{sex.m}}" class="sexIcon"/>
                 <image wx:else src="{{sex.w}}" class="sexIcon"/>

@@ -49,12 +49,14 @@ Component({
                 return;
             }
             let ls = this.data.list;
-            if (ls.length > 0){
+            if (ls.length > 0) {
                 //表示有数据，不需要重新加载一遍
                 return;
             }
             ls.length = 0;
-            ls.push(this.data.item);
+            for (let i = 0; i < 5; i++) {
+                ls.push(this.data.item);
+            }
             this.setData({
                 isLoading: false,
                 list: ls,
