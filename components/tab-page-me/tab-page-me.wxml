@@ -1,16 +1,18 @@
 <view class="base">
     <view class="meHeader">
-        <image src="{{userInfo.avatarIcon}}" class="meBg"></image>
+        <image src="{{user.avatarUrl}}" class="meBg"></image>
         <view class="user">
-            <image src="{{userInfo.avatarIcon}}" class="meBgAvatar" bindtap="handleTap"/>
-            <view class="userInfo" bindtap="handleTap">
-                <text>{{userInfo.nickName}}</text>
-                <image wx:if="{{userInfo.sex==='m'}}" src="{{sex.m}}" class="sexIcon"/>
-                <image wx:else src="{{sex.w}}" class="sexIcon"/>
+            <button class="meBgAvatar" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+                <image src="{{user.avatarUrl}}" class="meBgAvatarImage"/>
+            </button>
+            <view class="userInfo" bind:tap="handleTap">
+                <text>{{user.nickName}}</text>
+                <image wx:if="{{user.gender===1}}" src="{{gender.m}}" class="sexIcon"/>
+                <image wx:else src="{{gender.w}}" class="sexIcon"/>
             </view>
         </view>
     </view>
-    <view style="width:100%; background-color:green;">
+    <view style="width:100%;">
         <ant-list
                 className="meList"
                 radius="{{ radius }}">
@@ -44,5 +46,10 @@
             </ant-list-item>
         </ant-list>
     </view>
+
+    <button
+            style="width:200px; margin-top:30px; height:40px; border-radius:30px; background-color:#efdd10;"
+            type="primary" bind:tap="login">登录
+    </button>
 
 </view>
