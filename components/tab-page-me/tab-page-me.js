@@ -21,18 +21,14 @@ Component({
     lifetimes: {
         ready: function () {
             console.log(this.data.tag, "ready()=====>开始执行");
-            this.setData({
-                user: globalData.user,
-            });
+            this.updateUser();
         },
     },
 
     pageLifetimes: {
         show: function () {
             console.log(this.data.tag, "show()=====>开始执行");
-            this.setData({
-                user: globalData.user,
-            });
+            this.updateUser();
         }
     },
 
@@ -51,7 +47,15 @@ Component({
                         duration: 2000,
                     });
                     this.updateUser();
-                })
+                });
+
+                // res.avatarUrl = avatarUrl;
+                // Bmob.User.upInfo(res).then(v => {
+                //     console.log(this.data.tag, "修改用户图像成功 =====> ");
+                //     console.log(this.data.tag, v);
+                //     this.updateUser();
+                // });
+
             }).catch(err => {
                 console.log(err)
             })
