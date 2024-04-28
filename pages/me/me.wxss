@@ -41,5 +41,81 @@
   align-items: center;
   width: 100%;
   height: 100%;
+  background: whitesmoke;
+}
+.base .go {
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+}
+.base .lesGo {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+}
+.base .lesGo .wxInput {
+  width: 200px;
+  text-align: right;
+}
+.base .root {
+  width: 100%;
+  padding: 10px;
+}
+.base .root .itemGroup {
+  width: 100%;
+  border-radius: 10px;
+  background-color: white;
+}
+.base .root .itemGroup .btn {
+  background: transparent;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  border: none;
+}
+.base .root .itemGroup .btn text {
+  display: block;
+  margin-left: 10px;
+  margin-right: 10px;
+  fonst-weight: bold;
+  font-size: 14px;
+}
+.base .root .itemGroup .line {
+  margin: 0 10px 0 10px;
+  height: 1px;
+  background-color: whitesmoke;
+}
+.base .root .itemGroup .item {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+}
+.base .root .itemGroup .item .birthday {
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 200px;
+}
+.base .root .itemGroup .item text {
+  display: block;
+  margin-left: 10px;
+  margin-right: 10px;
+  fonst-weight: bold;
+  font-size: 14px;
+}
+.base .root .itemGroup .item .avatar {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background-color: red;
 }
 /*# sourceMappingURL=me.wxss.map */

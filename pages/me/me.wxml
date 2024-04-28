@@ -1,5 +1,69 @@
 <view class="base">
     <navigation-header title="{{title}}" style="width:100%" showBack="{{true}}"/>
 
+    <view class="root">
+
+        <view class="itemGroup">
+            <button class="item btn" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+                <text>头像</text>
+                <view class="lesGo">
+                    <image src="{{user.avatarUrl}}" class="avatar"/>
+                    <image src="../../imgRes/go.png" class="go"/>
+                </view>
+            </button>
+
+            <view class="line"/>
+
+            <view class="item">
+                <text>昵称</text>
+                <view class="lesGo">
+                    <input class="wxInput" value="{{user.nickName}}" type="nickname"
+                           placeholder="请输入昵称" confirm-type="done" bindblur="inputNickEvent"/>
+                    <image src="../../imgRes/go.png" class="go"/>
+                </view>
+            </view>
+
+            <view class="line"/>
+
+            <picker style="width:100%;" bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+                <view class="item">
+                    <text>性别</text>
+                    <view class="lesGo">
+                        <text wx:if="{{user.gender===1}}">男</text>
+                        <text wx:else>女</text>
+                        <image src="../../imgRes/go.png" class="go"/>
+                    </view>
+                </view>
+            </picker>
+
+            <view class="line"/>
+
+            <picker style="width:100%;" mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01"
+                    bindchange="bindDateChange">
+                <view class="item">
+                    <text class="picker">生日</text>
+                    <view class="lesGo">
+                        <text>{{user.birthday}}</text>
+                        <image src="../../imgRes/go.png" class="go"/>
+                    </view>
+                </view>
+            </picker>
+        </view>
+
+        <view class="itemGroup" style="margin-top:10px;">
+            <view class="item">
+                <text>用户协议</text>
+                <image src="../../imgRes/go.png" class="go"/>
+            </view>
+
+            <view class="line"/>
+
+            <view class="item">
+                <text>隐私政策</text>
+                <image src="../../imgRes/go.png" class="go"/>
+            </view>
+        </view>
+
+    </view>
 
 </view>

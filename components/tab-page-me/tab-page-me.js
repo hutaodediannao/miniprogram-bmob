@@ -7,11 +7,7 @@ Component({
 
     data: {
         tag: 'tab-page-me',
-        user: {
-            avatarUrl: '/imgRes/lv.png',
-            nickName: '张三',
-            gender: 0,
-        },
+        user: globalData.user,
         gender: {
             w: '../../imgRes/wan_sex_w.png',
             m: '../../imgRes/wan_sex_m.png'
@@ -21,14 +17,20 @@ Component({
     lifetimes: {
         ready: function () {
             console.log(this.data.tag, "ready()=====>开始执行");
-            this.updateUser();
+            if (globalData.user != null) {
+                this.setData({
+                    user: globalData.user,
+                });
+            }
         },
     },
 
     pageLifetimes: {
         show: function () {
             console.log(this.data.tag, "show()=====>开始执行");
-            this.updateUser();
+            this.setData({
+                user: globalData.user,
+            });
         }
     },
 
@@ -48,14 +50,6 @@ Component({
                     });
                     this.updateUser();
                 });
-
-                // res.avatarUrl = avatarUrl;
-                // Bmob.User.upInfo(res).then(v => {
-                //     console.log(this.data.tag, "修改用户图像成功 =====> ");
-                //     console.log(this.data.tag, v);
-                //     this.updateUser();
-                // });
-
             }).catch(err => {
                 console.log(err)
             })
@@ -71,7 +65,13 @@ Component({
                     this.setData({
                         user: res,
                     });
-                    globalData.user = res;
+
+                    //修改全局变量
+                    this.getApp().setData({
+                        globalData: {
+                            user: res,
+                        }
+                    });
                 }
             });
         },
@@ -122,8 +122,18 @@ Component({
             })
         },
         handleTap() {
+            let that = this;
             wx.navigateTo({
-                url: '/pages/me/me'
+                url: '/pages/me/me',
+                events: {
+                    getData: function (data) {
+                        console.log('tab-page', data);
+                        that.setData({
+                                user: globalData.user,
+                            }
+                        );
+                    }
+                }
             })
         },
 
