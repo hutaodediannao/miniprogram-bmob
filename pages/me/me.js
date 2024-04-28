@@ -85,6 +85,5 @@ Page({
         title: '个人资料',
         user: globalData.user,
         array: ['男', '女'],
-
     }
 });

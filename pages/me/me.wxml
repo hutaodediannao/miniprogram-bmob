@@ -49,21 +49,6 @@
                 </view>
             </picker>
         </view>
-
-        <view class="itemGroup" style="margin-top:10px;">
-            <view class="item">
-                <text>用户协议</text>
-                <image src="../../imgRes/go.png" class="go"/>
-            </view>
-
-            <view class="line"/>
-
-            <view class="item">
-                <text>隐私政策</text>
-                <image src="../../imgRes/go.png" class="go"/>
-            </view>
-        </view>
-
     </view>
 
 </view>

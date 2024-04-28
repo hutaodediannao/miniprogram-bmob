@@ -1,5 +1,31 @@
 <view class="base">
     <navigation-header title="{{title}}" style="width:100%" showBack="{{true}}"/>
 
+    <view class="root">
+        <view class="itemGroup" style="margin-top:10px;">
+            <view class="item">
+                <text>版本号</text>
+                <view class="lesGo">
+                    <text>v-{{version}}</text>
+                </view>
+            </view>
+
+            <view class="line"/>
+
+            <view class="item">
+                <text>隐私政策</text>
+                <image src="../../imgRes/go.png" class="go"/>
+            </view>
+        </view>
+    </view>
+
+    <button wx:if="{{user !== null}}"
+            style="width:200px; margin-top:30px; height:40px; border-radius:30px; background-color:#efdd10;"
+            type="primary" bind:tap="logOut">退出登录
+    </button>
+    <button wx:else
+            style="width:200px; margin-top:30px; height:40px; border-radius:30px; background-color:#efdd10;"
+            type="primary" bind:tap="login">登录
+    </button>
 
 </view>

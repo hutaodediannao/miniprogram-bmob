@@ -76,25 +76,6 @@ Component({
             });
         },
 
-        //点击登录按钮
-        login() {
-            //获取用户当前信息
-            if (globalData.user) {
-                //未获取用户信息,标识用户未注册成功,需要bmob的API重新注册
-
-
-            } else {
-                const query = Bmob.Query(Bmob.User.className);
-                const objectId = globalData.user.objectId;
-                query.get(objectId).then(res => {
-                    console.log(res);
-
-                }).catch(err => {
-                    console.log(err)
-                });
-            }
-        },
-
         submitTap() {
             console.log('submitHistory')
             wx.navigateTo({
@@ -102,19 +83,6 @@ Component({
             })
         },
 
-        showTap() {
-            wx.showModal({
-                title: '退出登录',
-                content: '确定退出登录吗?',
-                success(res) {
-                    if (res.confirm) {
-                        console.log('用户点击确定')
-                    } else if (res.cancel) {
-                        console.log('用户点击取消')
-                    }
-                }
-            })
-        },
         catchTap() {
             console.log("tab-page-me", "catchTap()")
             wx.navigateTo({

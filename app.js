@@ -20,5 +20,11 @@ App({
             console.log("Bmob.login() err===========>", err)
             this.globalData.user = null;
         });
+
+        //设置版本号(体验版无法获取,写个假的吧)
+        // const miniProgram  = wx.getAccountInfoSync();
+        // this.version = miniProgram.miniProgram.version;
+        this.version = '1.0.1';
+        console.log(this.version)
     }
 })

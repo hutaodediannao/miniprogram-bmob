@@ -4,4 +4,85 @@
   .flex-v-start;
   width: @full-width;
   height: @full-height;
+  background: @backgroundColor-bg;
+
+  .go {
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+  }
+
+  .lesGo {
+    .flex-h-center;
+    .wxInput{
+      width: 200px;
+      text-align: right;
+    }
+  }
+
+  .root {
+    width: @full-width;
+    padding: 10px;
+
+
+    .itemGroup {
+      width: 100%;
+      border-radius: 10px;
+      background-color: @backgroundColor;
+
+      .btn {
+        background: transparent;
+        margin: 0;
+        padding: 0;
+        .flex-h-center;
+        width: @full-width;
+        height: 40px;
+        border: none;
+
+        text {
+          display: block;
+          margin-left: 10px;
+          margin-right: 10px;
+          fonst-weight: bold;
+          font-size: 14px;
+        }
+      }
+
+      .line {
+        margin: 0 10px 0 10px;
+        height: 1px;
+        background-color: @backgroundColor-bg;
+      }
+
+      .item {
+        .flex-h-center;
+        width: @full-width;
+        height: 40px;
+
+        .birthday{
+          margin-left: 10px;
+          margin-right: 10px;
+          width: 200px;
+        }
+
+        text {
+          display: block;
+          margin-left: 10px;
+          margin-right: 10px;
+          fonst-weight: bold;
+          font-size: 14px;
+        }
+
+        .avatar {
+          width: 30px;
+          height: 30px;
+          margin-right: 10px;
+          border-radius: 50%;
+          background-color: red;
+        }
+      }
+
+    }
+  }
+
 }
