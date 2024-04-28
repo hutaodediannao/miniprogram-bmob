@@ -2,9 +2,7 @@
     <view class="meHeader">
         <image src="{{user.avatarUrl}}" class="meBg"></image>
         <view class="user">
-            <button class="meBgAvatar" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
-                <image src="{{user.avatarUrl}}" class="meBgAvatarImage"/>
-            </button>
+            <image class="meBgAvatar" src="{{user.avatarUrl}}" bind:tap="handleTap"/>
             <view class="userInfo" bind:tap="handleTap">
                 <text>{{user.nickName}}</text>
                 <image wx:if="{{user.gender===1}}" src="{{gender.m}}" class="sexIcon"/>

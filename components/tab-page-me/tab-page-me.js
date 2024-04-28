@@ -35,47 +35,6 @@ Component({
     },
 
     methods: {
-        //点击头像修改
-        onChooseAvatar(e) {
-            let avatarUrl = e.detail.avatarUrl;
-            //开始修改服务器用户信息图片地址
-            const query = Bmob.Query(Bmob.User.className);
-            const objectId = globalData.user.objectId;
-            query.get(objectId).then(res => {
-                res.set('avatarUrl', avatarUrl)
-                res.save().then(res => {
-                    wx.showToast({
-                        title: '修改成功',
-                        duration: 2000,
-                    });
-                    this.updateUser();
-                });
-            }).catch(err => {
-                console.log(err)
-            })
-        },
-
-        //更新用户信息UI
-        updateUser() {
-            const query = Bmob.Query(Bmob.User.className);
-            const objectId = globalData.user.objectId;
-            query.get(objectId).then(res => {
-                if (res) {
-                    console.log("res.save().then=======> ", res)
-                    this.setData({
-                        user: res,
-                    });
-
-                    //修改全局变量
-                    this.getApp().setData({
-                        globalData: {
-                            user: res,
-                        }
-                    });
-                }
-            });
-        },
-
         submitTap() {
             console.log('submitHistory')
             wx.navigateTo({

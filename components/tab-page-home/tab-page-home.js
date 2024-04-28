@@ -1,4 +1,5 @@
 const app = getApp();
+const Bmob = getApp().globalData.Bmob;
 
 Component({
     data: {
@@ -8,15 +9,9 @@ Component({
         isLoading: false,
         isLoadMore: false,
         isScrollYAbled: true,//控制列表是否可以滑动
-        item: {
-            wxKey: '1',
-            icon: 'https://img2.baidu.com/it/u=2286064893,2631559078&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=313',
-            title: "5月1号 新手局,富春江七里扬帆,是江南水乡的一道独特风景线.此段江面狭窄...",
-            time: "2019-03-05",
-            location: '深圳-南山区-南山地铁站A出口',
-            name: '富春江徒步新手局,富春江七里扬帆,是江南水乡的一道独特风景线.',
-            personCount: 35,
-        },
+        limit: 10,
+        skipPage: 0,
+        isNoMore: false
     },
 
     lifetimes: {
@@ -48,21 +43,7 @@ Component({
                 console.log(this.data.tag, 'isLoading为true, 下拉刷新被终止执行')
                 return;
             }
-            let ls = this.data.list;
-            if (ls.length > 0) {
-                //表示有数据，不需要重新加载一遍
-                return;
-            }
-            ls.length = 0;
-            for (let i = 0; i < 5; i++) {
-                ls.push(this.data.item);
-            }
-            this.setData({
-                isLoading: false,
-                list: ls,
-                triggered: false,
-            });
-            app.globalData.homePageDataList = this.data.list;
+            this.loadListNetData(true);
         },
         hide: function () {
             // 页面被隐藏
@@ -80,24 +61,7 @@ Component({
                 console.log(this.data.tag, 'isLoading为true, 下拉刷新被终止执行')
                 return;
             }
-            let that = this;
-
-            console.log(this.data.tag, that.data.item);
-            setTimeout(v => {
-                console.log(this.data.tag, '开始加载刷新数据');
-                let ls = that.data.list;
-                ls.length = 0;
-                for (let i = 0; i < 5; i++) {
-                    ls.push(that.data.item);
-                }
-
-                that.setData({
-                    isLoading: false,
-                    list: ls,
-                    triggered: false
-                });
-                app.globalData.homePageDataList = this.data.list;
-            }, 2000, 0)
+            this.loadListNetData(true);
         },
 
         //底部加载更多
@@ -109,7 +73,15 @@ Component({
             }
             this.setData({
                 isLoadMore: true,
-            })
+            });
+            this.loadListNetData(false);
+        },
+
+        dragend(evt) {
+            console.log(this.data.tag, evt.detail)
+        },
+
+        loadListNetData(isRefresh = false) {
             wx.showLoading({
                 title: "加载中...",
                 success: res => {
@@ -118,25 +90,85 @@ Component({
                     })
                 }
             });
-            setTimeout(res => {
-                let ls = this.data.list;
-                for (let i = 1; i < 3; i++) {
-                    ls.push(this.data.item);
+            const query = Bmob.Query('scene');
+            if (isRefresh) {
+                query.limit(this.data.limit);
+                query.skip(0);
+                console.log("请求参数this.data.skipPage========>", 0);
+            } else {
+                query.limit(this.data.limit);
+                query.skip((this.data.skipPage + 1) * this.data.limit);
+                console.log("请求参数this.data.skipPage========>", (this.data.skipPage + 1) * this.data.limit);
+            }
+
+            query.find().then(res => {
+                // 返回成功
+                if (isRefresh) {
+                    console.log(this.data.tag, '开始刷新第一页数据');
+                } else {
+                    console.log(this.data.tag, '开始加载更多页数据');
                 }
-                this.setData({
-                    list: ls,
-                    isLoadMore: false,
-                    isScrollYAbled: true,
-                })
-                wx.hideLoading();
+                console.log(res);
+
+                let ls = this.data.list;
+                if (isRefresh) {
+                    ls.length = 0;//先清除列表数据
+                    if (res != null && res.length > 0) {
+                        let len = res.length;
+
+                        console.log("len=======>", len);
+                        console.log("limit=======>", this.data.limit);
+
+                        for (let i = 0; i < len; i++) {
+                            ls.push(res[i]);
+                        }
+                        this.setData({
+                            list: ls,
+                            skipPage: 0,
+                            isNoMore: len < this.data.limit,
+                        });
+                    } else {
+                        this.setData({
+                            isNoMore: true,
+                        });
+                    }
+                    this.setData({
+                        isLoading: false,
+                        triggered: false,
+                        isScrollYAbled: true,
+                    });
+                } else {
+                    if (res != null && res.length > 0) {
+                        let len = res.length;
+                        for (let i = 0; i < len; i++) {
+                            ls.push(res[i]);
+                        }
+                        this.setData({
+                            list: ls,
+                            skipPage: this.data.skipPage + 1,
+                            isNoMore: len < this.data.limit,
+                        });
+                    } else {
+                        wx.showToast({
+                            title: "没有更多数据了",
+                            duration: 2000,
+                        })
+                        this.setData({
+                            isNoMore: true,
+                        })
+                    }
+                    this.setData({
+                        isLoadMore: false,
+                        isLoading: false,
+                        triggered: false,
+                        isScrollYAbled: true,
+                    })
+                }
+
                 app.globalData.homePageDataList = this.data.list;
-            }, 2000);
-        },
-
-        dragend(evt) {
-            console.log(this.data.tag, evt.detail)
-
-
+                wx.hideLoading();
+            });
         }
+
     },
 })

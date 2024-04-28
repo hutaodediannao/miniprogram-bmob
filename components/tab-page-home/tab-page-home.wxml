@@ -26,7 +26,9 @@
             </view>
         </list-builder>
         <view class="loadMore" bind:tap="scrolltolower">
-            <text>点击加载更多</text>
+
+            <text wx:if="{{isNoMore}}">已经到底了</text>
+            <text wx:else>点击加载更多</text>
         </view>
     </scroll-view>
 
