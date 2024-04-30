@@ -27,6 +27,10 @@ function tabPageHeight(pageIndex = 0) {
         return wx.getWindowInfo().screenHeight - statusBarHeight() - navHeight() - navBottomHeight;
 }
 
+function topHeight(){
+    return navHeight() + statusBarHeight();
+}
+
 const navBottomHeight = 55;
 
 module.exports = {
@@ -35,4 +39,5 @@ module.exports = {
     navBottomHeight: navBottomHeight,
     tabPageHeight: tabPageHeight,
     screenWidth: screenWidth(),
+    topHeight: topHeight(),
 }

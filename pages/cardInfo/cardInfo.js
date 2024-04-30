@@ -4,6 +4,54 @@ const user = getApp().globalData.user;
 const TAG = 'cardInfo';
 
 Page({
+    lvoe() {
+        wx.showLoading({
+            title: "操作中,请稍等..."
+        });
+        const query = Bmob.Query('scene');
+        query.get(this.data.lifeData.objectId).then((res) => {
+            console.log("cardInfo.get=====>", res);
+            let loves = res.loves;
+            if (loves == null) {
+                loves = [user];
+            } else {
+                //判断是否已经报名了
+                let size = loves.filter(userItem => userItem.objectId === user.objectId).length;
+                if (size <= 0) {
+                    loves.push(user);
+                } else {
+                    let filUsers = loves.filter(userItem => userItem.objectId !== user.objectId);
+                    loves.length = 0;
+                    loves.push(filUsers);
+                }
+            }
+
+            query.set("id", res.objectId);
+            query.set("loves", loves);
+            query.save().then(res => {
+                console.log("cardInfo.save=====>", res)
+                wx.hideLoading();
+                wx.showToast({
+                    title: "操作成功!",
+                    duration: 2000,
+                    success: res1 => {
+                        this.setData({
+                            submitOk: true,
+                        });
+                        setTimeout(() => wx.navigateBack(), 2000);
+                    }
+                });
+            }).catch(err => {
+                console.log(err)
+                wx.hideLoading();
+                wx.showToast({
+                    title: "操作失败!",
+                    icon: 'error'
+                })
+            });
+        });
+    },
+
     enterClick() {
         console.log('enter');
         this.setData({
@@ -34,6 +82,12 @@ Page({
 
         isShow: false,
         submitOk: false,
+        icon: {
+            loveOk: '../../imgRes/loveOk.png',
+            loveNo: "../../imgRes/loveNo.png"
+        },
+        loveGroupHeight: 200 + common.topHeight,
+        isLove: false,
     },
 
     onLoad: function (options) {
@@ -42,14 +96,27 @@ Page({
 
         let query = wx.createSelectorQuery();
         query.select("#pro").boundingClientRect(res => {
-                console.log(TAG, "width:" + res.width);
-                let titleTextWidth = common.screenWidth - 50 - 20
+                let titleTextWidth = common.screenWidth - 50 - 20;
+
                 this.setData({
                     lifeData: lifeData,
                     titleTextWidth: titleTextWidth,
                 });
             }
         ).exec();
+
+        this.isMyLove(lifeData);
+    },
+
+    isMyLove(lifeData) {
+        let loves = lifeData.loves;
+        if (loves === null) return false;
+        let v = loves.filter(item => user.objectId === item.objectId).length > 0;
+        console.log(v);
+        this.setData({
+            isLove: v,
+        })
+        return v;
     },
 
     onUnload() {

@@ -57,7 +57,14 @@
         bind:enterClick="enterClick" bind:cancelClick="cancelClick"
         cancelOutSide="{{false}}" isShow="{{isShow}}" title="报名上车" content="提交即可加入该景区参游资格!"
         left="不用了" right="确定上车">
-<!--    <text>sole内容</text>-->
+    <!--    <text>sole内容</text>-->
 </editDialog>
+
+<view class="loveGroup"
+      bind:tap="lvoe"
+      style="width:36px; height:36px; margin-top:{{loveGroupHeight - 36 -10}}px; margin-left:{{titleTextWidth+36-10}}px;">
+    <image wx:if="{{isLove}}" src="{{icon.loveOk}}"/>
+    <image wx:else src="{{icon.loveNo}}"/>
+</view>
 
 
