@@ -1,6 +1,6 @@
 <view class="base">
 
-    <button type="primary" bind:tap="add">添加一条数据</button>
-    <button type="primary" bind:tap="login">微信登录</button>
+    <button type="primary" bind:tap="add">查询我的报名</button>
+
 
 </view>

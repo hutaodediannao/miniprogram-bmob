@@ -9,7 +9,7 @@ Page({
             {
                 icon: '/imgRes/scene.png',
                 activeIcon: '/imgRes/sceneS.png',
-                text: '收藏爱好',
+                text: '报名收藏',
             },
             {
                 icon: '/imgRes/me.png',

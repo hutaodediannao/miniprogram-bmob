@@ -1,6 +1,7 @@
+const globalData = getApp().globalData;
 const Bmob = getApp().globalData.Bmob;
-const common = require('../../util/base');
 const user = getApp().globalData.user;
+const common = require('../../util/base');
 const TAG = 'cardInfo';
 
 Page({
@@ -22,14 +23,54 @@ Page({
                 } else {
                     let filUsers = loves.filter(userItem => userItem.objectId !== user.objectId);
                     loves.length = 0;
-                    loves.push(filUsers);
+                    loves = filUsers;
                 }
             }
 
             query.set("id", res.objectId);
             query.set("loves", loves);
-            query.save().then(res => {
-                console.log("cardInfo.save=====>", res)
+            query.save().then(res1 => {
+                console.log("cardInfo love.save=====>", res1)
+                this.updateUserLoves(res);
+            }).catch(err => {
+                console.log(err)
+                wx.hideLoading();
+                wx.showToast({
+                    title: "操作失败!",
+                    icon: 'error'
+                })
+            });
+        });
+    },
+
+    updateUserLoves(res) {
+        //2.需要将这条数据设置个人用户列表里面，便于计算
+        let loves = user.loves;
+        if (loves == null || loves.length === 0) {
+            loves = [res.objectId];
+        } else {
+            console.log("cardInfo  res.objectId==========> ", res.objectId);
+            console.log("cardInfo  loves==========> ", loves);
+
+            let size = loves.filter(love => love === res.objectId).length;
+            if (size === 0) {
+                console.log(TAG, "开始收藏");
+                loves.push(res.objectId);
+            } else {
+                //判断是否已经报名了
+                let filLove = loves.filter(love => love !== res.objectId);
+                loves.length = 0;
+                loves = filLove;
+                console.log(TAG, "取消收藏");
+            }
+        }
+
+        const uq = Bmob.Query(Bmob.User.className);
+        const objectId = globalData.user.objectId;
+        uq.get(objectId).then(res => {
+            res.set("loves", loves)
+            res.save().then(res => {
+                common.updateUser();
                 wx.hideLoading();
                 wx.showToast({
                     title: "操作成功!",
@@ -41,15 +82,10 @@ Page({
                         setTimeout(() => wx.navigateBack(), 2000);
                     }
                 });
-            }).catch(err => {
-                console.log(err)
-                wx.hideLoading();
-                wx.showToast({
-                    title: "操作失败!",
-                    icon: 'error'
-                })
             });
-        });
+        }).catch(err => {
+            console.log("me, 用户信息修改失败=======>", err)
+        })
     },
 
     enterClick() {
@@ -111,6 +147,8 @@ Page({
     isMyLove(lifeData) {
         let loves = lifeData.loves;
         if (loves === null) return false;
+        console.log('isMyLove user============> ', user);
+
         let v = loves.filter(item => user.objectId === item.objectId).length > 0;
         console.log(v);
         this.setData({

@@ -1,6 +1,8 @@
 // app.js
 import Bmob from "hydrogen-js-sdk";
 
+const TAG = "app";
+
 App({
     globalData: {
         homePageDataList: [],
@@ -9,15 +11,16 @@ App({
     },
 
     onLaunch: function () {
+        console.log(TAG, "App Launching...");
         Bmob.initialize("d85a151cf3edf669", "199009", 'd4fc700a9b731bbea795a8ef65c17985');
 
         this.globalData.Bmob.User.auth().then(res => {
-            console.log("Bmob.login()===========>", res);
-            console.log('一键登陆成功')
+            console.log(TAG, "Bmob.login()===========>" + res);
+            console.log(TAG, '一键登陆成功')
             //开始设置用户信息,并保存
             this.globalData.user = res;
         }).catch(err => {
-            console.log("Bmob.login() err===========>", err)
+            console.log(TAG, "Bmob.login() err===========>" + err)
             this.globalData.user = null;
         });
 

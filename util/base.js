@@ -1,3 +1,6 @@
+const globalData = getApp().globalData;
+const Bmob = getApp().globalData.Bmob;
+
 /**
  * 获取导航栏高度px
  * @returns {number}
@@ -15,7 +18,7 @@ function statusBarHeight() {
     return wx.getWindowInfo().statusBarHeight
 }
 
-function screenWidth(){
+function screenWidth() {
     return wx.getWindowInfo().screenWidth;
 }
 
@@ -27,11 +30,37 @@ function tabPageHeight(pageIndex = 0) {
         return wx.getWindowInfo().screenHeight - statusBarHeight() - navHeight() - navBottomHeight;
 }
 
-function topHeight(){
+function topHeight() {
     return navHeight() + statusBarHeight();
 }
 
 const navBottomHeight = 55;
+
+function changeUserInfo(paramKey, paramValue, callbackSuccess, callbackFailure) {
+    const query = Bmob.Query(Bmob.User.className);
+    const objectId = globalData.user.objectId;
+    query.get(objectId).then(res => {
+        res.set(paramKey, paramValue)
+        res.save().then(res => {
+            updateUser(callbackSuccess, callbackFailure);
+        });
+    }).catch(err => {
+        console.log("me, 用户信息修改失败=======>", err);
+        callbackFailure(err)
+    })
+}
+
+//更新用户信息UI
+function updateUser() {
+    const query = Bmob.Query(Bmob.User.className);
+    const objectId = globalData.user.objectId;
+    query.get(objectId).then(res => {
+        if (res) {
+            //修改全局变量
+            globalData.user = res;
+        }
+    });
+}
 
 module.exports = {
     nh: navHeight(),
@@ -40,4 +69,6 @@ module.exports = {
     tabPageHeight: tabPageHeight,
     screenWidth: screenWidth(),
     topHeight: topHeight(),
+    updateUser: updateUser,
+
 }
