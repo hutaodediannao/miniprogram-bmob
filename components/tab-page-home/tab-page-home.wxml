@@ -22,7 +22,7 @@
         >
             <view slot:item slot:index>
                 <!--                <text>{{item.wxKey}}-{{index}}</text>-->
-                <life-card lifeData="{{item}}"></life-card>
+                <life-card bind:triggerDialog="triggerDialog" lifeData="{{item}}" bind:callback="callback"></life-card>
             </view>
         </list-builder>
         <view class="loadMore" bind:tap="scrolltolower">
@@ -31,6 +31,12 @@
             <text wx:else>点击加载更多</text>
         </view>
     </scroll-view>
-
-
 </view>
+
+<editDialog
+        bind:enterClick="enterClick" bind:cancelClick="cancelClick"
+        cancelOutSide="{{false}}" isShow="{{isShow}}" title="报名上车" content="提交即可加入该景区参游资格!"
+        left="不用了" right="确定上车">
+    <!--    <text>sole内容</text>-->
+</editDialog>
+

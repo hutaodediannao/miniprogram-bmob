@@ -1,3 +1,6 @@
+const user = getApp().globalData.user;
+const Bmob = getApp().globalData.Bmob;
+
 Component({
     properties: {
         lifeData: {
@@ -21,16 +24,23 @@ Component({
     },
     methods: {
         toInfo() {
+            let js = JSON.stringify(this.data.lifeData);
+            let ld = encodeURIComponent(js);
+            let that = this;
             wx.navigateTo({
-                url: '/pages/cardInfo/cardInfo'
+                url: '/pages/cardInfo/cardInfo?lifeData=' + ld,
+                events: {
+                    getData: function (data) {
+                        console.log('life-card, 此处需要判断是否需要主页列表刷新', data);
+                        //提交上车后, 需要刷新主页列表,此处表示组件回传事件给page (data表示参数)
+                        that.triggerEvent("callback", data);
+                    }
+                }
             })
         },
 
         tap() {
-            wx.navigateTo({
-                url: '/pages/detail/detail'
-            })
-
+           this.triggerEvent("triggerDialog", this.data.lifeData);
         }
     }
 });

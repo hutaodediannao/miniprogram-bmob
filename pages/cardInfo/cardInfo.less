@@ -4,4 +4,52 @@
   .flex-v-start;
   width: @full-width;
   height: @full-height;
+
+  .sw {
+    height: 200px;
+    width: @full-width;
+
+    image {
+      width: @full-width;
+      height: @full-height;
+    }
+  }
+
+  .msgInfo {
+    width: @full-width;
+    padding: 10px;
+
+    .textCla {
+      font-weight: lighter;
+      font-size: 17px;
+    }
+
+    .event {
+      .flex-h-start;
+      margin-bottom: 10px;
+
+      .ic{
+        width: 50px;
+      }
+
+      .content {
+        color: #464545;
+      }
+    }
+  }
+
+  .btn{
+    width: 260px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: @base-color;
+    border: none;
+    margin-top: 40px;
+  }
+}
+
+.dialog {
+  .flex-v-center;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.33);
 }

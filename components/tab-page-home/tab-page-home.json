@@ -3,6 +3,7 @@
   "usingComponents": {
     "life-card": "/components/life-card/life-card",
     "ant-button": "antd-mini/Button/index",
-    "ant-loading": "antd-mini/Loading/index"
+    "ant-loading": "antd-mini/Loading/index",
+    "editDialog": "/components/editDialog/editDialog"
   }
 }

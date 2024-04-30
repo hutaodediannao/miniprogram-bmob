@@ -15,6 +15,10 @@ function statusBarHeight() {
     return wx.getWindowInfo().statusBarHeight
 }
 
+function screenWidth(){
+    return wx.getWindowInfo().screenWidth;
+}
+
 //获取三个TabBar对应的页面高度计算
 function tabPageHeight(pageIndex = 0) {
     if (pageIndex === 2)
@@ -30,4 +34,5 @@ module.exports = {
     sh: statusBarHeight(),
     navBottomHeight: navBottomHeight,
     tabPageHeight: tabPageHeight,
+    screenWidth: screenWidth(),
 }

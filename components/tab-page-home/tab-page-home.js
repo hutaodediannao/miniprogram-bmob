@@ -1,5 +1,7 @@
 const app = getApp();
 const Bmob = getApp().globalData.Bmob;
+const user = getApp().globalData.user;
+const TAG = "tab-page-home";
 
 Component({
     data: {
@@ -11,7 +13,9 @@ Component({
         isScrollYAbled: true,//控制列表是否可以滑动
         limit: 10,
         skipPage: 0,
-        isNoMore: false
+        isNoMore: false,
+        isShow: false,
+        lifeData: null,
     },
 
     lifetimes: {
@@ -43,7 +47,9 @@ Component({
                 console.log(this.data.tag, 'isLoading为true, 下拉刷新被终止执行')
                 return;
             }
-            this.loadListNetData(true);
+            if (this.data.list == null || this.data.list.length <= 0) {
+                this.loadListNetData(true);
+            }
         },
         hide: function () {
             // 页面被隐藏
@@ -55,6 +61,16 @@ Component({
 
     methods: {
         //下拉刷新
+        callback(evt) {
+            let submitOk = evt.detail.submitOk;
+            if (submitOk != null && submitOk === true) {
+                console.log("主页列表收到提交事件参数:callback=====>", submitOk);
+                this.refresherrefresh()
+            } else {
+                console.log("主页列表收到提交事件参数:callback=====>", "null");
+            }
+        },
+
         refresherrefresh() {
             console.log(this.data.tag, '下拉刷新被触发')
             if (this.data.isLoading) {
@@ -168,7 +184,79 @@ Component({
                 app.globalData.homePageDataList = this.data.list;
                 wx.hideLoading();
             });
-        }
+        },
 
+        triggerDialog(evt){
+            this.setData({
+                isShow: true,
+                lifeData: evt.detail,
+            });
+        },
+
+        enterClick() {
+            console.log('enter');
+            this.setData({
+                isShow: false
+            });
+            this.submit();
+        },
+
+        cancelClick() {
+            console.log('cancel');
+        },
+
+        submit() {
+            wx.showLoading({
+                title: "提交中,请稍等..."
+            });
+            const query = Bmob.Query('scene');
+            query.get(this.data.lifeData.objectId).then((res) => {
+                console.log("cardInfo.get submitUsers=====>", res.submitUsers);
+                console.log("cardInfo.get user=====>", user);
+                let submitUsers = res.submitUsers;
+                if (submitUsers == null) {
+                    submitUsers = [user];
+                } else {
+                    //判断是否已经报名了
+                    let size = submitUsers.filter(userItem => userItem.objectId === user.objectId).length;
+                    if (size <= 0) {
+                        submitUsers.push(user);
+                    } else {
+                        wx.showToast({
+                            title: "你已经报名了！",
+                            icon: 'error'
+                        });
+                        return;
+                    }
+                }
+
+                query.set("id", res.objectId);
+                query.set("submitUsers", submitUsers);
+                query.save().then(res => {
+                    console.log("cardInfo.save=====>", res)
+                    wx.hideLoading();
+                    wx.showToast({
+                        title: "提交成功!",
+                        duration: 2000,
+                        success: res1 => {
+                            this.setData({
+                                submitOk: true,
+                            });
+                            setTimeout(() => {
+
+
+                            }, 2000);
+                        }
+                    });
+                }).catch(err => {
+                    console.log(err)
+                    wx.hideLoading();
+                    wx.showToast({
+                        title: "提交失败!",
+                        icon: 'error'
+                    })
+                });
+            })
+        }
     },
 })

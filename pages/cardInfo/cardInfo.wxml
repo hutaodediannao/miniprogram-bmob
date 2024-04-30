@@ -1,5 +1,63 @@
-<view class="base">
-    <navigation-header title="{{title}}" style="width:100%" showBack="{{true}}"/>
+<view style="display:block; z-index:0;">
+    <view class="base">
+        <navigation-header title="{{title}}" style="width:100%" showBack="{{true}}"/>
 
+        <swiper
+                wx:if="{{lifeData.icons.length>0}}"
+                class="sw"
+                indicator-dots="true"
+                indicator-color="white"
+                indicator-active-color="#efdd10"
+                autoplay="true"
+                current="0"
+                interval="2000"
+                duration="800"
+                circular="true"
+                display-multiple-items="1"
+                previous-margin="0px"
+                easing-function="easeInOutCubic">
 
+            <swiper-item wx:for="{{lifeData.icons}}" wx:key="item" skip-hidder-item-layout="true">
+                <image src="{{item}}" bind:tap="preImage" data-clickUrl="{{item}}"/>
+            </swiper-item>
+
+        </swiper>
+
+        <image wx:else src="{{lifeData.icon}}" class="sw" bind:tap="preImage" data-clickUrl="{{lifeData.icon}}"/>
+
+        <view class="msgInfo">
+            <view class="event" style="align-items: flex-start;">
+                <text id="pro" style="font-weight:bold;width:50px;">项目:</text>
+                <text class="textCla" style="width:{{titleTextWidth}}px;">{{lifeData.title}}</text>
+            </view>
+            <view class="event">
+                <ant-icon type="{{timeIcon}}" className="ic"></ant-icon>
+                <text class="content">{{lifeData.time}}</text>
+            </view>
+            <view class="event">
+                <ant-icon type="{{locationIcon}}" className="ic"></ant-icon>
+                <text class="content">{{lifeData.location}}</text>
+            </view>
+            <view class="event">
+                <ant-icon type="{{nameIcon}}" className="ic"></ant-icon>
+                <text class="content">{{lifeData.name}}</text>
+            </view>
+            <view class="event">
+                <ant-icon type="{{personIcon}}" className="ic"></ant-icon>
+                <text>{{lifeData.submitUsers.length}}/{{lifeData.personCount}} 人已上车</text>
+            </view>
+
+        </view>
+
+        <button type="primary" bind:tap="upload" class="btn">报名上车</button>
+    </view>
 </view>
+
+<editDialog
+        bind:enterClick="enterClick" bind:cancelClick="cancelClick"
+        cancelOutSide="{{false}}" isShow="{{isShow}}" title="报名上车" content="提交即可加入该景区参游资格!"
+        left="不用了" right="确定上车">
+<!--    <text>sole内容</text>-->
+</editDialog>
+
+

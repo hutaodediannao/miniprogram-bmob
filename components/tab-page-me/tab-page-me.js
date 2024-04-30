@@ -1,5 +1,7 @@
 const globalData = getApp().globalData;
 const Bmob = getApp().globalData.Bmob;
+const user = getApp().globalData.user;
+
 
 Component({
 
@@ -35,6 +37,7 @@ Component({
     },
 
     methods: {
+
         submitTap() {
             console.log('submitHistory')
             wx.navigateTo({
@@ -48,6 +51,7 @@ Component({
                 url: '/pages/setting/setting'
             })
         },
+
         handleTap() {
             let that = this;
             wx.navigateTo({
@@ -64,5 +68,5 @@ Component({
             })
         },
 
-    }
+    },
 });

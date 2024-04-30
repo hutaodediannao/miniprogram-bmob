@@ -27,7 +27,7 @@
 
         <view class="event">
             <ant-icon type="{{personIcon}}" className="ic"></ant-icon>
-            <text>{{lifeData.personCount}} 人已上车</text>
+            <text>{{lifeData.submitUsers.length}}/{{lifeData.personCount}} 人已上车</text>
         </view>
 
         <ant-button
@@ -41,3 +41,5 @@
 
     </view>
 </view>
+
+

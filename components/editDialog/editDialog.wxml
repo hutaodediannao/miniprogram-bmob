@@ -1,0 +1,11 @@
+<view class="dialog" wx:if="{{isShow}}" bind:tap="clickOutSide">
+    <view class="content" style="width:{{width}}px;height:{{height}}px;">
+        <text class="title">{{title}}</text>
+        <slot></slot>
+        <text class="msg">{{content}}</text>
+        <view class="btnGroup">
+            <button class="left" bind:tap="leftClick">{{left}}</button>
+            <button class="right" bind:tap="rightClick">{{right}}</button>
+        </view>
+    </view>
+</view>
