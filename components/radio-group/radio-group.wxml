@@ -1,0 +1,22 @@
+<view class="group">
+
+    <block wx:for="{{radios}}" wx:key="item">
+
+        <view class="leftItem" wx:if="{{index === 0}}" bind:tap="itemClick" data-index="{{index}}"
+              style="background-color:{{currentIndex===index?selectBackgroundColor:normaBackgroundColor}};color:{{currentIndex===index?selectTextColor:textColor}};">
+            <text>{{item}}</text>
+        </view>
+
+        <view class="rightItem" wx:elif="{{index === tabsCount-1}}" bind:tap="itemClick" data-index="{{index}}"
+              style="background-color:{{currentIndex===index?selectBackgroundColor:normaBackgroundColor}};color:{{currentIndex===index?selectTextColor:textColor}};">
+            <text>{{item}}</text>
+        </view>
+
+        <view class="item" wx:else bind:tap="itemClick" data-index="{{index}}"
+              style="background-color:{{currentIndex===index?selectBackgroundColor:normaBackgroundColor}};color:{{currentIndex===index?selectTextColor:textColor}};">
+            <text>{{item}}</text>
+        </view>
+    </block>
+
+</view>
+

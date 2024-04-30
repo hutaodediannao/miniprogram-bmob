@@ -1,0 +1,37 @@
+@import url('../../lessRes/common');
+
+
+.commonItem {
+  flex: 1;
+  height: 30px;
+  width: 100%;
+  border: 2px solid @base-color;
+  .flex-h-center-center;
+
+  text {
+    margin: 5px 20px 5px 20px;
+  }
+}
+
+.group {
+  height: 30px;
+  .flex-h-center-center;
+  text-align: center;
+
+  .leftItem {
+    .commonItem;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
+
+  .item {
+    .commonItem;
+  }
+
+  .rightItem {
+    .commonItem;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+
+}

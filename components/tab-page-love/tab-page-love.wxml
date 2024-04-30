@@ -1,25 +1,15 @@
 <view class="base">
-    <ant-tabs
-            className="tab"
-            items="{{ items }}"
-            current="{{ current }}"
-            bind:change="onChange">
-        <swiper
-                current="{{ current }}"
-                autoplay="{{ false }}"
-                vertical="{{ false }}"
-                circular="{{ false }}"
-                bind:change="onSwipeChange">
-            <block
-                    wx:for="{{ items }}"
-                    wx:for-index="index"
-                    wx:for-item="item"
-                    wx:key="{{ index }}">
-                <swiper-item>
-                    <view class="content">{{ item.content }}</view>
-                </swiper-item>
-            </block>
-        </swiper>
-    </ant-tabs>
+
+    <view class="tab">
+        <radio-group radios="{{radios}}" tabsCount="2" currentIndex="{{current}}" bind:tabClick="tabClick"/>
+    </view>
+
+    <swiper class="sw" current="{{current}}"
+            bindchange="onSwipeChange">
+        <swiper-item wx:for="{{radios}}">
+            <text>{{item}}</text>
+        </swiper-item>
+    </swiper>
+
 
 </view>

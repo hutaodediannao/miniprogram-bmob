@@ -1,6 +1,7 @@
 {
   "component": true,
   "usingComponents": {
-    "ant-tabs": "antd-mini/Tabs/index"
+    "ant-tabs": "antd-mini/Tabs/index",
+    "radio-group": "/components/radio-group/radio-group"
   }
 }

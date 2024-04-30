@@ -6,31 +6,27 @@ Component({
     properties: {},
     data: {
         current: 0,
-        items: [
-            {
-                title: '水果',
-                subTitle: '描述文案',
-                content: '西瓜',
-            },
-            {
-                title: '蔬菜',
-                subTitle: '描述文案',
-                content: '西红柿',
-            },
-            {
-                title: '动物',
-                subTitle: '描述文案',
-                content: '蚂蚁',
-            },
+        radios: [
+            '我的报名',
+            '我的收藏'
         ],
     },
 
     methods: {
-        onSwipeChange(e) {
+        tabClick(evt) {
+            console.log('tabClick', evt.detail);
             this.setData({
-                current: e.detail.current,
+                current: evt.detail,
             });
         },
+
+        onSwipeChange(evt) {
+            console.log('onSwipeChange', evt.detail);
+            this.setData({
+                current: evt.detail.current,
+            });
+        },
+
         onChange(current) {
             current = current.detail;
             this.setData({
