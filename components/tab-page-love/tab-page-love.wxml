@@ -1,6 +1,25 @@
 <view class="base">
-
-    <button type="primary" bind:tap="add">查询我的报名</button>
-
+    <ant-tabs
+            className="tab"
+            items="{{ items }}"
+            current="{{ current }}"
+            bind:change="onChange">
+        <swiper
+                current="{{ current }}"
+                autoplay="{{ false }}"
+                vertical="{{ false }}"
+                circular="{{ false }}"
+                bind:change="onSwipeChange">
+            <block
+                    wx:for="{{ items }}"
+                    wx:for-index="index"
+                    wx:for-item="item"
+                    wx:key="{{ index }}">
+                <swiper-item>
+                    <view class="content">{{ item.content }}</view>
+                </swiper-item>
+            </block>
+        </swiper>
+    </ant-tabs>
 
 </view>

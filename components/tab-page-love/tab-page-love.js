@@ -4,28 +4,38 @@ const TAG = "tab-page-love";
 
 Component({
     properties: {},
-    data: {},
+    data: {
+        current: 0,
+        items: [
+            {
+                title: '水果',
+                subTitle: '描述文案',
+                content: '西瓜',
+            },
+            {
+                title: '蔬菜',
+                subTitle: '描述文案',
+                content: '西红柿',
+            },
+            {
+                title: '动物',
+                subTitle: '描述文案',
+                content: '蚂蚁',
+            },
+        ],
+    },
+
     methods: {
-        add(e) {
-            // const query = Bmob.Query("scene");
-            // query.statTo("where", '{"submitUsers","className":"_User"}');
-            // query.find().then(res => {
-            //     console.log(res)
-            // });
-
-            console.log(TAG, e);
-
-            globalData.Bmob.User.auth().then(res => {
-                console.log(TAG, "Bmob.login()===========>" + res);
-                console.log(TAG, '一键登陆成功')
-                //开始设置用户信息,并保存
-                this.globalData.user = res;
-            }).catch(err => {
-                console.log(TAG, "Bmob.login() err===========>" + err)
-                globalData.user = null;
+        onSwipeChange(e) {
+            this.setData({
+                current: e.detail.current,
             });
-
-
-        }
+        },
+        onChange(current) {
+            current = current.detail;
+            this.setData({
+                current,
+            });
+        },
     }
 });

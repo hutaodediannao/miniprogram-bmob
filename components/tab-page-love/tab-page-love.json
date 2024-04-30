@@ -1,5 +1,6 @@
 {
   "component": true,
   "usingComponents": {
+    "ant-tabs": "antd-mini/Tabs/index"
   }
 }
