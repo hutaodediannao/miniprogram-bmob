@@ -6,6 +6,10 @@ Component({
         lifeData: {
             type: Object,
             value: null
+        },
+        isShowGoCar:{
+            type: Boolean,
+            value: true,
         }
     },
     data: {

@@ -1,15 +1,48 @@
 <view class="base">
-
-    <view class="tab">
-        <radio-group radios="{{radios}}" tabsCount="2" currentIndex="{{current}}" bind:tabClick="tabClick"/>
-    </view>
+    <radio-group radios="{{radios}}" tabsCount="2" currentIndex="{{current}}"
+                 style="margin-top:10px;" bind:tabClick="tabClick"/>
 
     <swiper class="sw" current="{{current}}"
             bindchange="onSwipeChange">
         <swiper-item wx:for="{{radios}}">
-            <text>{{item}}</text>
+
+            <scroll-view
+                    type="custom"
+                    scroll-y="{{isScrollYAbled}}"
+                    style="width:100%; height:100%;"
+                    enable-passive="true"
+                    enhanced="{{true}}"
+                    show-scrollbar="false">
+
+                <list-builder
+                        wx:if="{{item===radios[0]}}"
+                        list="{{myLoveList}}"
+                        child-count="{{myLoveList.length}}"
+                        child-height="200"
+                        bind:itembuild="onItemBuild"
+                        bind:itemdispose="onItemDispose">
+                    <view slot:item slot:index>
+                        <life-card bind:triggerDialog="triggerDialog" lifeData="{{item}}"
+                                   bind:callback="callback" isShowGoCar="{{false}}"/>
+                    </view>
+                </list-builder>
+
+                <list-builder
+                        wx:elif="{{item===radios[1]}}"
+                        list="{{mySubmitList}}"
+                        child-count="{{mySubmitList.length}}"
+                        child-height="200"
+                        bind:itembuild="onItemBuild"
+                        bind:itemdispose="onItemDispose">
+                    <view slot:item slot:index>
+                        <life-card bind:triggerDialog="triggerDialog" lifeData="{{item}}"
+                                   bind:callback="callback" isShowGoCar="{{false}}"/>
+                    </view>
+                </list-builder>
+
+            </scroll-view>
+
         </swiper-item>
     </swiper>
-
 
 </view>

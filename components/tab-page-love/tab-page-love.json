@@ -2,6 +2,7 @@
   "component": true,
   "usingComponents": {
     "ant-tabs": "antd-mini/Tabs/index",
-    "radio-group": "/components/radio-group/radio-group"
+    "radio-group": "/components/radio-group/radio-group",
+    "life-card": "/components/life-card/life-card"
   }
 }

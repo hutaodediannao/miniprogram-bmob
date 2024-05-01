@@ -22,8 +22,8 @@
             </view>
         </block>
     </view>
-    <view class="line"></view>
-    <view class="cardBottom">
+    <view class="line" wx:if="{{isShowGoCar}}"/>
+    <view class="cardBottom" wx:if="{{isShowGoCar}}">
 
         <view class="event">
             <ant-icon type="{{personIcon}}" className="ic"></ant-icon>
