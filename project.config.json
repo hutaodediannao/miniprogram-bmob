@@ -20,7 +20,8 @@
       "outputPath": ""
     },
     "ignoreDevUnusedFiles": false,
-    "ignoreUploadUnusedFiles": false
+    "ignoreUploadUnusedFiles": false,
+    "condition": false
   },
   "condition": {},
   "editorSetting": {

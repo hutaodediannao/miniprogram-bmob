@@ -5,6 +5,8 @@
     "compileHotReLoad": false,
     "skylineRenderEnable": true,
     "urlCheck": false,
-    "bigPackageSizeSupport": true
+    "bigPackageSizeSupport": true,
+    "autoAudits": false,
+    "preloadBackgroundData": true
   }
 }
